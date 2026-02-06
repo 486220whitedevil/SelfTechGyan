@@ -14,7 +14,7 @@ const LandingNavbar = () => {
       {/* Auth Buttons */}
       <div className="flex gap-4">
         <Link
-          to={isLoggedIn ? '/home' : '/login'}
+          to={isLoggedIn() ? '/home' : '/login'}
           className="px-6 py-2 text-white border border-yellow-500 rounded-lg
           hover:bg-yellow-500 hover:text-black transition-all duration-300"
         >

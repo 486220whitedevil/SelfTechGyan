@@ -1,75 +1,68 @@
-import React, { useState } from "react";
-import Navbar from "./Navbar";
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar"
 
 const Contact = () => {
-    const [form, setForm] = useState({
-        name: "",
-        email: "",
-        message: "",
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate()
+
+  const submitForm = async (e) => {
+    e.preventDefault();
+
+    await axios.post("/api/callback", {
+      name,
+      phone,
+      message,
     });
 
-    const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
-    };
+    alert("✅ Request submitted. We will call you soon.");
+    setName(""); setPhone(""); setMessage("");
+    navigate("/home")
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Contact Form Data:", form);
-        alert("Message sent successfully!");
-        setForm({ name: "", email: "", message: "" });
-    };
+  };
 
-    return (
-        <>
-            <Navbar />
-            <div className="min-h-screen bg-gray-900 flex justify-center items-center">
-                <div className="bg-gray-800 p-10 rounded-xl w-full max-w-md shadow-lg">
-                    <h2 className="text-2xl font-bold text-white text-center mb-6">
-                        Contact Us 📩
-                    </h2>
+  return (
+    <div className="h-screen w-full">
+      <Navbar/>
+      <div className="h-screen w-full flex justify-center items-center">
+        <div className="w-lg mx-auto   bg-gray-800 p-6 rounded-xl">
+          <h2 className="text-yellow-500 text-xl mb-4 text-center">Contact Us</h2>
 
-                    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                        <input
-                            type="text"
-                            name="name"
-                            placeholder="Your Name"
-                            value={form.name}
-                            onChange={handleChange}
-                            required
-                            className="px-4 py-2 rounded bg-gray-700 text-white outline-none"
-                        />
+          <form onSubmit={submitForm} className="flex flex-col gap-4">
+            <input
+              className="p-3 bg-gray-700 text-white rounded-lg"
+              placeholder="Your Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
 
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Your Email"
-                            value={form.email}
-                            onChange={handleChange}
-                            required
-                            className="px-4 py-2 rounded bg-gray-700 text-white outline-none"
-                        />
+            <input
+              className="p-3 bg-gray-700 text-white rounded-lg"
+              placeholder="Mobile Number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              required
+            />
 
-                        <textarea
-                            name="message"
-                            placeholder="Your Message"
-                            value={form.message}
-                            onChange={handleChange}
-                            rows="4"
-                            required
-                            className="px-4 py-2 rounded bg-gray-700 text-white outline-none resize-none"
-                        />
+            <textarea
+              className="p-3 bg-gray-700 text-white rounded-lg"
+              placeholder="Message (optional)"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
 
-                        <button
-                            type="submit"
-                            className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-2 rounded transition"
-                        >
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </>
-    );
+            <button className="bg-yellow-500 text-black py-2 rounded-lg cursor-pointer">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Contact;

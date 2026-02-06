@@ -7,11 +7,12 @@ import { Routes, Route } from "react-router-dom";
 import About from './components/About';
 import Courses from './components/Courses';
 import LandingHome from './components/LandingHome';
-import Logout from './components/Logout';
 import AdminDashboard from './components/AdminDashboard';
 import AdminRoute from './routes/AdminRoute';
 import AdminLogin from './components/AdminLogin';
-import CallbackForm from './components/Callback';
+import VideoPlayerPage from './components/VideoPlayerPage';
+import Footer from './components/Footer';
+import PlaylistVideos from './components/PlaylistVideos';
 
 
 const App = () => {
@@ -25,9 +26,9 @@ const App = () => {
         <Route path='/contact' element={<Contact/>} />
         <Route path="/about" element={<About />} />
         <Route path='/courses' element={<Courses/>} />
-        <Route path='/logout' element={<Logout/>} />
         <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/callback" element={<CallbackForm/>} />
+        <Route path='/watch/:videoId' element={<VideoPlayerPage/>} />
+        <Route path="/playlist/:playlistId" element={<PlaylistVideos />} />
 
       <Route
         path="/admin"
@@ -38,6 +39,7 @@ const App = () => {
         }
       />
       </Routes>
+      <Footer/>
     </div>
   )
 }

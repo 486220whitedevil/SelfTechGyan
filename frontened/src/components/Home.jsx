@@ -16,7 +16,7 @@ const Home = () => {
 
 
   useEffect(() => {
-    const username = localStorage.getItem("username");
+    const username = sessionStorage.getItem("username");
 
     if (username) {
       speakText(`Welcome ${username} to SelfTechGyan , Learn tech. Think smart. Grow fast.`);
@@ -28,7 +28,7 @@ const Home = () => {
             <Navbar />
             <div className='flex justify-center items-center min-h-screen'>
                 <div className='p-10 text-center'>
-                    <h1 className='text-white font-bold text-2xl pb-6'>Welcome to Study App 📚</h1>
+                    <h1 className='text-white font-bold text-2xl pb-6'>Welcome to SelfTechGyan 📚</h1>
                     <p className='text-white'>
                         Learn anytime, anywhere. Access courses, notes and practice questions
                         at one place.

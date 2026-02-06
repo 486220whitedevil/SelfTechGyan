@@ -45,7 +45,7 @@ const LandingHome = () => {
               </a>
 
               <a
-                href={isLoggedIn ? '/home' : '/login'}
+                href={isLoggedIn() ? '/home' : '/login'}
                 className="border border-yellow-500 px-8 py-3 rounded-lg
                 hover:bg-yellow-500 hover:text-black hover:scale-105 transition-all duration-300"
               >

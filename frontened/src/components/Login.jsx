@@ -16,8 +16,8 @@ const Login = () => {
         password,
       });
 
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("username", res.data.user.username);
+      sessionStorage.setItem("token", res.data.token);
+      sessionStorage.setItem("username", res.data.user.username);
      
       navigate("/home");
     } catch (err) {

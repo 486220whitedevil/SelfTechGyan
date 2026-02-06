@@ -21,7 +21,7 @@ const Register = () => {
     try {
       await axios.post("/api/auth/register", form);
       alert("Registered Successfully 🎉");
-      navigate("/");
+      navigate("/login");
     } catch (err) {
       alert(err.response?.data?.error || "Registration failed");
     }

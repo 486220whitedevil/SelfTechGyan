@@ -27,7 +27,8 @@ const AdminDashboard = () => {
     return (
         <div className="min-h-screen bg-gray-900 p-8">
             {/* Page Title */}
-            <h1 className="text-3xl font-bold mb-8 text-gray-800 text-white">
+            <div className="flex justify-between">
+                <h1 className="text-3xl font-bold mb-8 text-gray-800 text-white">
                 📚 Course Management
                 
             </h1>
@@ -38,6 +39,7 @@ const AdminDashboard = () => {
                     navigate('/admin/login')
                  }}
                 >Logout</button>
+            </div>
 
             {/* Add Course Card */}
             <div className="bg-gray-500 p-6 rounded-xl shadow mb-10">
@@ -114,10 +116,10 @@ const AdminDashboard = () => {
                                             ₹{course.price}
                                         </td>
                                         <td className="p-3 text-center space-x-2">
-                                            <button className="px-3 py-1 bg-yellow-400 rounded hover:bg-yellow-500">
+                                            <button className="px-3 py-1 bg-yellow-400 rounded hover:bg-yellow-500 cursor-pointer">
                                                 Edit
                                             </button>
-                                            <button className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">
+                                            <button className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 cursor-pointer">
                                                 Delete
                                             </button>
                                         </td>
